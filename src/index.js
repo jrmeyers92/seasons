@@ -25,7 +25,7 @@ class App extends React.Component {
 
     return (
         <div>
-            <Spinner text= "please accept geolocation."/>
+            <Spinner text= "Pease accept location request."/>
         </div>
     );
   };
