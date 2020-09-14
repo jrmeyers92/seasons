@@ -13,21 +13,31 @@ class App extends React.Component {
     );
   }
 
+  renderContent() {
+    if (this.state.errorMessage && !this.state.lat) {
+        return <div>Error: {this.state.errorMessage}</div>;
+      }
+  
+      if (!this.state.errorMessage && this.state.lat) {
+        return <SeasonDisplay lat={this.state.lat} />
+      }
+  
+      return (
+          <div>
+              <Spinner text= "Pease accept location request."/>
+          </div>
+      )
+
+    }
+
+
   // React says we have to define render!!
   render() {
-    if (this.state.errorMessage && !this.state.lat) {
-      return <div>Error: {this.state.errorMessage}</div>;
-    }
-
-    if (!this.state.errorMessage && this.state.lat) {
-      return <SeasonDisplay lat={this.state.lat} />
-    }
-
     return (
-        <div>
-            <Spinner text= "Pease accept location request."/>
+        <div className="border red">
+            {this.renderContent()}
         </div>
-    );
+    )
   };
 };
 
